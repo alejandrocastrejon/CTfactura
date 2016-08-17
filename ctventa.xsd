@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema targetNamespace="http://www.smartfactura.com/cfdi/3" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:ctventa="http://www.smartfactura.com/cfdi/3" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="t_NumerosSerie">
+    <xs:annotation>
+      <xs:documentation>Tipo definido para expresar información de series</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Numero" use="required">
+      <xs:annotation>
+        <xs:documentation>Atributo requerido para expresar el consecutivo de la serie.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:minLength value="1"/>
+          <xs:whiteSpace value="collapse"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="Serie" use="required">
+      <xs:annotation>
+        <xs:documentation>Atributo requeridpo para precisar el numero de serie.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:minLength value="1"/>
+          <xs:whiteSpace value="collapse"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:element name="addendaSmartFacturaParaCT">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Factura" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Addenda de venta de CT Internacional del Noroeste.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Conceptos">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Concepto" minOccurs="1" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:choice minOccurs="0">
+                          <xs:element name="NumerosSeries" type="ctventa:t_NumerosSerie" minOccurs="0" maxOccurs="unbounded">
+                            <xs:annotation>
+                              <xs:documentation>Nodo opcional para introducir el detalle de series entregadas.</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                        </xs:choice>
+                        <xs:attribute name="Partida" use="required">
+                          <xs:simpleType>
+                            <xs:restriction base="xs:integer">
+                            </xs:restriction>
+                          </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="descuento" use="optional">
+                          <xs:simpleType>
+                            <xs:restriction base="xs:decimal">
+                            </xs:restriction>
+                          </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="impuesto" use="optional">
+                          <xs:simpleType>
+                            <xs:restriction base="xs:decimal">
+                            </xs:restriction>
+                          </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="comentarios" use="optional">
+                          <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                            </xs:restriction>
+                          </xs:simpleType>
+                        </xs:attribute>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Version" use="required" fixed="1.0">
+              <xs:annotation>
+                <xs:documentation>Atributo requerido con valor prefijado a 1.0 este cambia segun revision .</xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:whiteSpace value="collapse"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="CodigoCliente" use="required">
+              <xs:annotation>
+                <xs:documentation>Atributo requerido para precisar la codigo interno del cliente.</xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:whiteSpace value="collapse" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+            <xs:attribute name="TelefonoCliente" use="optional">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:whiteSpace value="collapse" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="CodigoVendedor" use="required">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:whiteSpace value="collapse" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+            <xs:attribute name="NumeroPedido" use="optional">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:whiteSpace value="collapse" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="FechaVencimiento" use="optional">
+              <xs:simpleType>
+                <xs:restriction base="xs:dateTime">
+                  <xs:whiteSpace value="collapse" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+            <xs:attribute name="MedioRecepcion" use="required">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:whiteSpace value="collapse" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
