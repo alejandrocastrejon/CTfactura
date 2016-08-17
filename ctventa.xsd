@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<xs:schema targetNamespace="http://www.smartfactura.com/cfdi/3" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:ctventa="http://www.smartfactura.com/cfdi/3" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema targetNamespace="https://raw.githubusercontent.com/alejandrocastrejon/CTfactura/master" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:ctventa="https://raw.githubusercontent.com/alejandrocastrejon/CTfactura/master" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:complexType name="t_NumerosSerie">
     <xs:annotation>
       <xs:documentation>Tipo definido para expresar información de series</xs:documentation>
